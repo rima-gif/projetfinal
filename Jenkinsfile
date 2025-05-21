@@ -115,16 +115,16 @@ pipeline {
     stage("Build Docker Images") {
       steps {
         script {
-          dir('back') {
+          dir('ebanking-backend') {
             sh """
-              docker build -t rima603/backprojet:${BUILD_NUMBER} .
-              docker tag rima603/backprojet:${BUILD_NUMBER} rima603/backprojet1:latest
+              docker build -t rima603/backprojet1:${BUILD_NUMBER} .
+              docker tag rima603/backprojet1:${BUILD_NUMBER} rima603/backprojet1:latest
             """
           }
-          dir('front') {
+          dir('ebanking-frontend') {
             sh """
-              docker build -t rima603/frontprojet:${BUILD_NUMBER} .
-              docker tag rima603/frontprojet:${BUILD_NUMBER} rima603/frontprojet1:latest
+              docker build -t rima603/frontprojet1:${BUILD_NUMBER} .
+              docker tag rima603/frontprojet1:${BUILD_NUMBER} rima603/frontprojet1:latest
             """
           }
         }
