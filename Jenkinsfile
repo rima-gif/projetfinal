@@ -48,49 +48,44 @@ pipeline {
       }
     }
 
-  stage('Start MySQL for Tests') {
-  steps {
-    script {
-      sh '''
-        docker rm -f mysql-test || true
+    stage('Start MySQL for Tests') {
+      steps {
+        script {
+          sh '''
+            docker rm -f mysql-test || true
 
-        docker run -d --name mysql-test -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=E-Bank -p 3306:3306 mysql:8.0
+            docker run -d --name mysql-test -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=E-Bank -p 3306:3306 mysql:8.0
 
-        echo "⏳ Attente de démarrage de MySQL..."
-        for i in $(seq 1 20); do
-          if docker exec mysql-test mysqladmin ping -h127.0.0.1 -proot > /dev/null 2>&1; then
-            echo "✅ MySQL est prêt après $i tentatives."
-            break
-          else
-            echo "🔄 Tentative $i : MySQL pas encore prêt..."
-            sleep 3
-          fi
-        done
+            echo "⏳ Attente de démarrage de MySQL..."
+            for i in $(seq 1 20); do
+              if docker exec mysql-test mysqladmin ping -h127.0.0.1 -proot > /dev/null 2>&1; then
+                echo "✅ MySQL est prêt après $i tentatives."
+                break
+              else
+                echo "🔄 Tentative $i : MySQL pas encore prêt..."
+                sleep 3
+              fi
+            done
 
-        # Si la boucle échoue après 20 essais, afficher les logs
-        if ! docker exec mysql-test mysqladmin ping -h127.0.0.1 -proot > /dev/null 2>&1; then
-          echo "❌ Échec : MySQL n'est pas prêt après 20 tentatives."
-          echo "📄 Logs du conteneur :"
-          docker logs mysql-test
-          exit 1
-        fi
-      '''
-    }
-  }
-}
-
-
-
-   stage("Run Backend Tests") {
-  steps {
-    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-      dir('ebanking-backend') {
-        sh 'mvn test'
+            if ! docker exec mysql-test mysqladmin ping -h127.0.0.1 -proot > /dev/null 2>&1; then
+              echo "❌ Échec : MySQL n'est pas prêt après 20 tentatives."
+              docker logs mysql-test
+              exit 1
+            fi
+          '''
+        }
       }
     }
-  }
-}
 
+    stage("Run Backend Tests") {
+      steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+          dir('ebanking-backend') {
+            sh 'mvn test'
+          }
+        }
+      }
+    }
 
     stage('Stop MySQL') {
       steps {
@@ -109,7 +104,6 @@ pipeline {
           }
         }
       }
-     
     }
 
     stage("Build Docker Images") {
@@ -139,7 +133,6 @@ pipeline {
 
             mkdir -p $HOME/.cache/trivy
 
-            # Scan backend
             docker run --rm \
               -v /var/run/docker.sock:/var/run/docker.sock \
               -v $HOME/.cache/trivy:/root/.cache/ \
@@ -148,9 +141,8 @@ pipeline {
               --skip-update \
               --timeout 10m \
               --severity HIGH,CRITICAL \
-              rima603/backprojet:${BUILD_NUMBER} || true
+              rima603/backprojet1:${BUILD_NUMBER} || true
 
-            # Scan frontend
             docker run --rm \
               -v /var/run/docker.sock:/var/run/docker.sock \
               -v $HOME/.cache/trivy:/root/.cache/ \
@@ -159,7 +151,7 @@ pipeline {
               --skip-update \
               --timeout 2m \
               --severity HIGH,CRITICAL \
-              rima603/frontprojet:${BUILD_NUMBER} || true
+              rima603/frontprojet1:${BUILD_NUMBER} || true
           '''
         }
       }
@@ -170,10 +162,10 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
           sh """
             echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
-            docker push rima603/backprojet:${BUILD_NUMBER}
-            docker push rima603/backprojet:latest
-            docker push rima603/frontprojet:${BUILD_NUMBER}
-            docker push rima603/frontprojet:latest
+            docker push rima603/backprojet1:${BUILD_NUMBER}
+            docker push rima603/backprojet1:latest
+            docker push rima603/frontprojet1:${BUILD_NUMBER}
+            docker push rima603/frontprojet1:latest
           """
         }
       }
@@ -185,8 +177,8 @@ pipeline {
           git branch: 'main', credentialsId: 'github', url: 'https://github.com/rima-gif/k8s-manifests.git'
 
           sh """
-            sed -i 's|image: rima603/backprojet:.*|image: rima603/backprojet1:${BUILD_NUMBER}|' backend/deployment.yaml
-            sed -i 's|image: rima603/frontprojet:.*|image: rima603/frontprojet1:${BUILD_NUMBER}|' frontend/deployment.yaml
+            sed -i 's|image: rima603/backprojet1:.*|image: rima603/backprojet1:${BUILD_NUMBER}|' backend/deployment.yaml
+            sed -i 's|image: rima603/frontprojet1:.*|image: rima603/frontprojet1:${BUILD_NUMBER}|' frontend/deployment.yaml
           """
 
           withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
@@ -206,10 +198,10 @@ pipeline {
 
   post {
     failure {
-      echo " Pipeline échoué. Vérifie les logs et corrige les erreurs."
+      echo "❌ Pipeline échoué. Vérifie les logs et corrige les erreurs."
     }
     success {
-      echo " Pipeline exécuté avec succès !"
+      echo "✅ Pipeline exécuté avec succès !"
     }
   }
 }
