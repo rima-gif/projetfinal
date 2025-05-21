@@ -14,7 +14,7 @@ RUN npm run build --prod
 FROM nginx:alpine
 
 
-COPY --from=build /app/dist/digital-banking-web  /usr/share/nginx/html
+COPY --from=build /app/dist/ebanking-frontend  /usr/share/nginx/html
 
 
 EXPOSE 80
