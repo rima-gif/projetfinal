@@ -32,14 +32,14 @@ pipeline {
       parallel {
         stage("SpringBoot") {
           steps {
-            dir('back') {
+            dir('ebanking-backend') {
               sh 'mvn clean install -DskipTests=true'
             }
           }
         }
         stage("Angular") {
           steps {
-            dir('front') {
+            dir('ebanking-frontend') {
               sh 'npm install'
               sh './node_modules/.bin/ng build --configuration production'
             }
@@ -84,7 +84,7 @@ pipeline {
    stage("Run Backend Tests") {
   steps {
     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-      dir('back') {
+      dir('ebanking-backend') {
         sh 'mvn test'
       }
     }
@@ -103,7 +103,7 @@ pipeline {
 
     stage("SonarQube Analysis") {
       steps {
-        dir('back') {
+        dir('ebanking-backend') {
           withSonarQubeEnv('sonarqube') {
             sh "mvn sonar:sonar -Dsonar.host.url=${env.SONAR_HOST_URL} -Dsonar.login=${env.SONAR_AUTH_TOKEN}"
           }
