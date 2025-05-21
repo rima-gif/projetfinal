@@ -6,7 +6,6 @@ import org.sid.ebankingbackend.dtos.CreditDTO;
 import org.sid.ebankingbackend.dtos.CustomerDTO;
 import org.sid.ebankingbackend.dtos.DebitDTO;
 import org.sid.ebankingbackend.dtos.TransferRequestDTO;
-import org.sid.ebankingbackend.entities.Customer;
 import org.sid.ebankingbackend.exceptions.BalanceNotSufficientException;
 import org.sid.ebankingbackend.exceptions.BankAccountNotFoundException;
 import org.sid.ebankingbackend.exceptions.CustomerNotFoundException;
