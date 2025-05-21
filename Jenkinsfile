@@ -23,7 +23,7 @@ pipeline {
         git(
           branch: 'main',
           credentialsId: 'github',
-          url: 'https://github.com/rima-gif/ProjetBankaComplet.git'
+          url: 'https://github.com/rima-gif/projetfinal.git'
         )
       }
     }
