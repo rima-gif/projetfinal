@@ -9,7 +9,7 @@ L'application se compose des couches suivantes :
     - Effectuer un crédit (Versement)
     - Effectuer un virement
     - Consulter un compte
-- La couche DTO
+- La couche DT
 - Mappers (DTO <=>Entities)
 - La couche Web (Rest Controllers)
 - Couche sécurité (Spring Security avec JWT)
