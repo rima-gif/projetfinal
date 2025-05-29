@@ -96,7 +96,7 @@ pipeline {
       }
     }
 
-   stage("SonarQube Analysis") {
+ stage("SonarQube Analysis") {
   parallel {
     stage("SonarQube Backend") {
       steps {
@@ -111,21 +111,22 @@ pipeline {
       steps {
         dir('ebanking-frontend') {
           withSonarQubeEnv('sonarqube') {
-            sh '''
+            sh """
               sonar-scanner \
                 -Dsonar.projectKey=ebanking-frontend \
                 -Dsonar.sources=. \
-                -Dsonar.host.url=${SONAR_HOST_URL} \
-                -Dsonar.login=${SONAR_AUTH_TOKEN} \
+                -Dsonar.host.url=${env.SONAR_HOST_URL} \
+                -Dsonar.login=${env.SONAR_AUTH_TOKEN} \
                 -Dsonar.exclusions=**/*.spec.ts,**/node_modules/**,**/*.test.ts \
                 -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info
-            '''
+            """
           }
         }
       }
     }
   }
 }
+
 
     stage("Build Docker Images") {
       steps {
