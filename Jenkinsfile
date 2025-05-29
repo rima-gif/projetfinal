@@ -148,7 +148,7 @@ pipeline {
               -v $HOME/.cache/trivy:/root/.cache/ \
               aquasec/trivy image \
               --scanners vuln \
-              --skip-update \
+              --skip-db-update \
               --timeout 2m \
               --severity HIGH,CRITICAL \
               rima603/frontprojet1:${BUILD_NUMBER} || true
