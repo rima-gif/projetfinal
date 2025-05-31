@@ -96,7 +96,7 @@ pipeline {
       }
     }
 
-stage("SonarQube Analysis Backend") {
+stage("SonarQube Analysis") {
       steps {
         dir('ebanking-backend') {
           withSonarQubeEnv('sonarqube') {
@@ -200,7 +200,7 @@ post {
   success {
     echo "✅ Pipeline exécuté avec succès !"
     slackSend (
-      channel: '#notifications',
+      channel: '#test-jekins',
       message: "✅ *Pipeline réussi* : `${env.JOB_NAME}` - Build #${env.BUILD_NUMBER}",
       color: 'good'
     )
@@ -208,7 +208,7 @@ post {
   failure {
     echo "❌ Pipeline échoué. Vérifie les logs et corrige les erreurs."
     slackSend (
-      channel: '#notifications',
+      channel: '#test-jekins',
       message: "❌ *Pipeline échoué* : `${env.JOB_NAME}` - Build #${env.BUILD_NUMBER}.\nVoir les logs: ${env.BUILD_URL}",
       color: 'danger'
     )
