@@ -218,12 +218,21 @@ pipeline {
     }
   }
 
-  post {
-    failure {
-      echo "❌ Pipeline échoué. Vérifie les logs et corrige les erreurs."
-    }
-    success {
-      echo "✅ Pipeline exécuté avec succès !"
-    }
+post {
+  success {
+    echo "✅ Pipeline exécuté avec succès !"
+    slackSend (
+      channel: '#notifications',
+      message: "✅ *Pipeline réussi* : `${env.JOB_NAME}` - Build #${env.BUILD_NUMBER}",
+      color: 'good'
+    )
+  }
+  failure {
+    echo "❌ Pipeline échoué. Vérifie les logs et corrige les erreurs."
+    slackSend (
+      channel: '#notifications',
+      message: "❌ *Pipeline échoué* : `${env.JOB_NAME}` - Build #${env.BUILD_NUMBER}.\nVoir les logs: ${env.BUILD_URL}",
+      color: 'danger'
+    )
   }
 }
