@@ -1,0 +1,271 @@
+/* Page background with a bottom-to-top blue-to-white gradient */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(to top, #003087 0%, #e6f0fa 100%);
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Animated background with bank and money emojis */
+body::before {
+    content: '💰💸💳💵🏦💲';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 3rem;
+    opacity: 0.1;
+    z-index: 0;
+    animation: floatMoney 12s infinite linear;
+}
+
+/* Individual emojis with random positions and animations */
+body::after {
+    content: '💰💸💳💵🏦💲';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    opacity: 0.15;
+    z-index: 0;
+    animation: floatMoneyReverse 18s infinite linear;
+}
+
+/* Container styling */
+.container {
+    margin: 50px auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Card styling */
+.card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 48, 135, 0.1);
+    animation: containerFadeIn 1.5s ease-in-out;
+}
+
+/* Card header styling */
+.card-header {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: #003087;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: #e6f0fa;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 15px;
+    position: relative;
+}
+
+.card-header::after {
+    content: '🏦';
+    position: absolute;
+    left: 38%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+/* Card body styling */
+.card-body {
+    padding: 20px;
+}
+
+/* Form and input group styling */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.input-group-text {
+    background: #003087;
+    color: #ffffff;
+    border: 2px solid #003087;
+    border-radius: 10px 0 0 10px;
+    padding: 10px 15px;
+}
+
+.form-control {
+    flex-grow: 1;
+    padding: 10px;
+    border: 2px solid #003087;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #a9a9a9;
+    box-shadow: 0 0 15px rgba(169, 169, 169, 0.5);
+    transform: scale(1.02);
+}
+
+/* Search button styling */
+.btn-primary {
+    background: #a9a9a9;
+    color: #003087;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    background: #808080;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Table styling */
+.table {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table th {
+    background: #003087;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 12px;
+    text-align: center;
+}
+
+.table td {
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table-bordered {
+    border: 2px solid #003087;
+}
+
+/* Action buttons styling */
+.btn-danger, .btn-dark {
+    padding: 8px 15px;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+}
+
+.btn-danger {
+    background: #ff4d4d;
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background: #e60000;
+    transform: translateY(-2px);
+}
+
+.btn-dark {
+    background: #333;
+    color: #ffffff;
+}
+
+.btn-dark:hover {
+    background: #000;
+    transform: translateY(-2px);
+}
+
+/* Card footer styling */
+.card-footer {
+    background: #e6f0fa;
+    text-align: center;
+    padding: 10px;
+    color: #003087;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+/* Error and loading message styling */
+.text-danger {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ff4d4d;
+    padding: 20px;
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #003087;
+    padding: 20px;
+}
+
+/* Keyframes for animations */
+@keyframes containerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatMoney {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes floatMoneyReverse {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+    }
+
+    .card-header {
+        font-size: 1.5rem;
+    }
+
+    .table th, .table td {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .btn-primary, .btn-danger, .btn-dark {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+}

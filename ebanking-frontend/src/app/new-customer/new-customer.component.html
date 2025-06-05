@@ -1,0 +1,35 @@
+<body>
+  <div class="container">
+    <div class="heading">Create Customer</div>
+    <form [formGroup]="newCustomerFormGroup" (ngSubmit)="handelSaveCustomer()" class="form">
+      <input class="input" type="text" formControlName="name" placeholder="Full Name" value="snseel" required />
+      <span class="error" *ngIf="newCustomerFormGroup.controls['name'].touched &&
+                                  newCustomerFormGroup.controls['name'].errors?.['required']">
+        Name is required
+      </span>
+
+      <input class="input" type="email" formControlName="email" placeholder="Email Address" value="mouna1ben1rebah@gmail.com" required />
+      <span class="error" *ngIf="newCustomerFormGroup.controls['email'].touched &&
+                                  newCustomerFormGroup.controls['email'].errors?.['email']">
+        Invalid email address
+      </span>
+
+      <input class="input" type="password" formControlName="password" placeholder="Password" required />
+      <span class="error" *ngIf="newCustomerFormGroup.controls['password'].touched &&
+                                  newCustomerFormGroup.controls['password'].errors?.['required']">
+        Password is required
+      </span>
+
+      <input class="input" type="password" formControlName="confirmPassword" placeholder="Confirm Password" required />
+      <span class="error" *ngIf="newCustomerFormGroup.controls['confirmPassword'].touched &&
+                                  newCustomerFormGroup.controls['confirmPassword'].errors?.['required']">
+        Confirm Password is required
+      </span>
+      <span class="error" *ngIf="newCustomerFormGroup.errors?.['passwordMismatch'] && newCustomerFormGroup.touched">
+        Passwords do not match
+      </span>
+
+      <button type="submit" class="login-button" [disabled]="!newCustomerFormGroup.valid">Save</button>
+    </form>
+  </div>
+</body>

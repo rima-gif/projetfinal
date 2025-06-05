@@ -1,0 +1,116 @@
+:root {
+    --blue-start: #0f2027;
+    --blue-mid: #203a43;
+    --blue-end: #2c5364;
+    --silver: #f8f9fa;
+    --accent: #00b4d8;
+    --btn-hover: #0077b6;
+    --radius: 12px;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, var(--blue-start), var(--blue-mid), var(--blue-end));
+    color: #fff;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--accent);
+  }
+  
+  .nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(180deg, #b7d0eb, #DBE7F4);
+  }
+  
+  .hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #003087;
+  }
+  
+  .hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #5da2eb;
+  }
+  
+  .cta-button {
+    padding: 14px 30px;
+    background: linear-gradient(45deg, var(--accent), var(--btn-hover));
+    color: black;
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-weight: bold;
+    transition: transform 0.3s;
+  }
+  
+  .cta-button:hover {
+    transform: scale(1.05);
+  }
+  
+  .features {
+    padding: 60px 20px;
+    background-color: var(--silver);
+    color: #1e293b;
+    text-align: center;
+  }
+  
+  .features h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+  
+  .feature-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .feature-card {
+    background: #fff;
+    color: #1e293b;
+    padding: 25px 20px;
+    border-radius: var(--radius);
+    max-width: 250px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-8px);
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 20px;
+    background: #111927;
+    font-size: 14px;
+    color: #ccc;
+  }
+  

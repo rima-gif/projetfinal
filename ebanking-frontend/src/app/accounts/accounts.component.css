@@ -1,0 +1,160 @@
+/* Contexte général */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to top, #003087 0%, #e6f0fa 100%);
+    min-height: 100vh;
+  }
+  
+  /* Container principal */
+  .container {
+    margin-top: 40px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(0, 48, 135, 0.15);
+    animation: containerFadeIn 1.2s ease-in-out;
+  }
+  
+  /* Card */
+  .card {
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 48, 135, 0.2);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  /* Card Header */
+  .card-header {
+    background-color: #DBE7F4;
+    color: #003087;
+    font-weight: 600;
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 15px;
+    letter-spacing: 1px;
+  }
+  
+  /* Input group */
+  .input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Label */
+  .input-group-text {
+    background-color: #003087;
+    color: #DBE7F4;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px 0 0 10px;
+    padding: 10px 15px;
+  }
+  
+  /* Input */
+  .form-control {
+    border: 2px solid #DBE7F4;
+    border-radius: 0 10px 10px 0;
+    padding: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .form-control:focus {
+    outline: none;
+    border-color: #003087;
+    box-shadow: 0 0 10px rgba(8, 0, 255, 0.281);
+  }
+  
+  /* Button */
+  .btn-primary {
+    background-color: #003087;
+    color: #DBE7F4;
+    border: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #003087;
+    transform: scale(1.05);
+  }
+  
+  /* Table */
+  .table-success {
+    background-color: #DBE7F4;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .table th {
+    background-color: #DBE7F4;
+    color: #003087;
+    text-align: center;
+  }
+  
+  .table td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  /* Labels affichage infos */
+  .mb-2 label {
+    display: inline-block;
+    font-size: 1rem;
+    margin-right: 10px;
+    color: #003087;
+  }
+  
+  /* Error */
+  .text-danger {
+    color: #ff4d4d;
+    margin-top: 15px;
+    font-weight: 500;
+    animation: errorFadeIn 0.5s ease-in-out;
+  }
+  
+  /* Animations */
+  @keyframes containerFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes errorFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .input-group {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .input-group-text, .form-control, .btn {
+      border-radius: 10px !important;
+    }
+  
+    .card-header {
+      font-size: 1.1rem;
+    }
+  }
+  

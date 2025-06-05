@@ -1,0 +1,20 @@
+<h2>My Bank Accounts</h2>
+
+<table *ngIf="accounts.length > 0" border="1">
+  <thead>
+    <tr>
+      <th>Account Number</th>
+      <th>Balance</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let account of accounts">
+      <td>{{ account.id }}</td>
+      <td>{{ account.balance }}</td>
+      <td>{{ account.type }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="accounts.length === 0">No bank accounts found.</p>

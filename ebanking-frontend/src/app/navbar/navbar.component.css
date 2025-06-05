@@ -1,0 +1,148 @@
+/* Navbar styling */
+.navbar {
+    background: linear-gradient(to bottom, #ffffff 0%, #DBE7F4 100%);
+    padding: 8px 20px;
+    border-bottom: 1px solid #000000;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1000;
+    animation: navbarFadeIn 1s ease-in-out;
+}
+
+/* Navbar brand styling */
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #003087; /* Noir */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #1a2a44; /* Bleu marine */
+}
+
+/* Navbar toggler styling */
+.navbar-toggler {
+    border: none;
+    padding: 6px;
+}
+
+.navbar-toggler-icon {
+    background-color: #000000; /* Noir */
+}
+
+/* Navbar collapse and nav items */
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 15px;
+}
+
+.nav-link {
+    color: #003087; /* Noir */
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 6px 12px;
+    border-radius: 5px;
+}
+
+.nav-link.active, .nav-link:hover {
+    color: #003087; /* Bleu marine */
+    background: rgba(26, 42, 68, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Dropdown styling */
+.dropdown-toggle {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    content: '▼';
+    font-size: 0.7rem;
+    margin-left: 5px;
+    vertical-align: middle;
+    color: #000000; /* Noir */
+}
+
+.dropdown-menu {
+    background: linear-gradient(to bottom, #ffffff 0%, #DBE7F4 100%);
+    border: 1px solid #1a2a44;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    animation: fadeInDropdown 0.3s ease-in-out;
+}
+
+.dropdown-item {
+    color: #000000; /* Noir */
+    padding: 8px 12px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    background: #1a2a44; /* Bleu marine */
+    color: #ffffff;
+}
+
+/* Keyframes for animations */
+@keyframes navbarFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDropdown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+    .navbar-collapse {
+        background: linear-gradient(to bottom, #ffffff 0%, #DBE7F4 100%);
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 8px;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-item {
+        margin: 8px 0;
+    }
+
+    .nav-link {
+        padding: 8px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
+}

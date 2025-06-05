@@ -1,0 +1,212 @@
+/* Page background with a bottom-to-top blue-to-white gradient */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(to top, #003087 0%, #e6f0fa 100%);
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Animated background with bank and money emojis */
+body::before {
+    content: '💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰🏦💰';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 3rem;
+    opacity: 0.1;
+    z-index: 0;
+    animation: floatMoney 12s infinite linear;
+}
+
+
+
+/* Container styling (the card) with a clean white background */
+.container {
+    max-width: 500px;
+    margin: 50px;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    color: #003087;
+    position: relative;
+    z-index: 1;
+    animation: containerFadeIn 1.5s ease-in-out;
+    border: 1px solid rgba(0, 48, 135, 0.1);
+}
+
+/* Heading styling with a professional and animated effect */
+.heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #003087;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    animation: headingSlideIn 1s ease-out;
+}
+
+.heading::after {
+    content: '🏦';
+    position: absolute;
+    top: -2px; /* Positionne l'emoji au-dessus du titre */
+    left: 18%; /* Centre horizontalement */
+    transform: translateX(-50%); /* Ajuste pour un centrage précis */
+    animation: bounce 2s infinite;
+}
+
+/* Form styling */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Input fields with professional hover and focus effects */
+.input {
+    padding: 15px;
+    font-size: 1rem;
+    border: 2px solid #003087;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #003087;
+    transition: all 0.4s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.input:focus {
+    outline: none;
+    border-color: #ffd700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    transform: scale(1.03);
+}
+
+.input::placeholder {
+    color: #666;
+    opacity: 0.8;
+}
+
+/* Error message styling with fade-in animation */
+.error {
+    color: #ff4d4d;
+    font-size: 0.9rem;
+    margin-top: -15px;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: errorFadeIn 0.6s forwards;
+}
+
+/* Submit button with a financial gold accent and hover animation */
+.login-button {
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10px;
+    background: #ffd700;
+    color: #003087;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.login-button:hover:not(:disabled) {
+    background: #e6c200;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.login-button:disabled {
+    background: #999;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Keyframes for animations */
+@keyframes containerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes headingSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes errorFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatMoney {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes floatMoneyReverse {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .heading {
+        font-size: 2rem;
+    }
+
+    .input, .login-button {
+        font-size: 0.9rem;
+        padding: 12px;
+    }
+}

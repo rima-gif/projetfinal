@@ -1,0 +1,16 @@
+<form [formGroup]="accountForm" (ngSubmit)="onSubmit()" class="container form">
+    <h2 class="heading">Create an Account</h2>
+  
+    <label for="balance">Initial Balance:</label>
+    <input formControlName="balance" type="number" class="input" placeholder="Enter initial balance" />
+  
+    <label for="status">Status:</label>
+    <select formControlName="status" class="input">
+      <option value="CREATED">CREATED</option>
+      <option value="SUSPENDED">SUSPENDED</option>
+      <option value="ACTIVATED">ACTIVATED</option>
+    </select>
+  
+    <button type="submit" class="login-button">Create Account</button>
+  </form>
+  
