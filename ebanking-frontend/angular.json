@@ -105,8 +105,5 @@
       }
     }
   },
-  "defaultProject": "ebanking-frontend",
-  "cli": {
-    "analytics": "99c5cc1f-be29-4152-a493-d9997c1a7520"
-  }
+  "defaultProject": "ebanking-frontend"
 }
