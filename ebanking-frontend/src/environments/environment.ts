@@ -1,7 +1,7 @@
 
 export const environment = {
   production: false,
-  backendHost: "http://localhost:9054/bankaccount"
+  backendHost: "http://192.168.40.124:30084"
 };
 
 
