@@ -147,7 +147,7 @@ stage("SonarQube Analysis") {
              --skip-db-update \
               --timeout 10m \
               --severity HIGH,CRITICAL \
-              rima603/backprojet1:${BUILD_NUMBER} || true
+              rima603/backprojet2:${BUILD_NUMBER} || true
 
             docker run --rm \
               -v /var/run/docker.sock:/var/run/docker.sock \
@@ -157,7 +157,7 @@ stage("SonarQube Analysis") {
               --skip-db-update \
               --timeout 2m \
               --severity HIGH,CRITICAL \
-              rima603/frontprojet1:${BUILD_NUMBER} || true
+              rima603/frontprojet2:${BUILD_NUMBER} || true
           '''
         }
       }
@@ -183,8 +183,8 @@ stage("SonarQube Analysis") {
           git branch: 'main', credentialsId: 'github', url: 'https://github.com/rima-gif/k8s-manifests.git'
 
           sh """
-            sed -i 's|image: rima603/backprojet1:.*|image: rima603/backproje21:${BUILD_NUMBER}|' backend/deployment.yaml
-            sed -i 's|image: rima603/frontprojet1:.*|image: rima603/frontprojet2:${BUILD_NUMBER}|' frontend/deployment.yaml
+            sed -i 's|image: rima603/backprojet2:.*|image: rima603/backprojet2:${BUILD_NUMBER}|' backend/deployment.yaml
+            sed -i 's|image: rima603/frontprojet2:.*|image: rima603/frontprojet2:${BUILD_NUMBER}|' frontend/deployment.yaml
           """
 
           withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
