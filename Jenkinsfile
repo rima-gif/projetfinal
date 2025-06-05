@@ -115,16 +115,16 @@ stage("SonarQube Analysis") {
         script {
           dir('ebanking-backend') {
             sh """
-              docker build -t rima603/backprojet1:${BUILD_NUMBER} .
-              docker tag rima603/backprojet1:${BUILD_NUMBER} rima603/backprojet2:latest
+              docker build -t rima603/backprojet2:${BUILD_NUMBER} .
+              docker tag rima603/backprojet2:${BUILD_NUMBER} rima603/backprojet2:latest
             """
           }
           dir('ebanking-frontend') {
             sh """
               export DOCKER_BUILDKIT=1
 
-              docker build -t rima603/frontprojet1:${BUILD_NUMBER} .
-              docker tag rima603/frontprojet1:${BUILD_NUMBER} rima603/frontprojet2:latest
+              docker build -t rima603/frontprojet2:${BUILD_NUMBER} .
+              docker tag rima603/frontprojet2:${BUILD_NUMBER} rima603/frontprojet2:latest
             """
           }
         }
@@ -168,10 +168,10 @@ stage("SonarQube Analysis") {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
           sh """
             echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
-            docker push rima603/backprojet1:${BUILD_NUMBER}
-            docker push rima603/backprojet1:latest
-            docker push rima603/frontprojet1:${BUILD_NUMBER}
-            docker push rima603/frontprojet1:latest
+            docker push rima603/backprojet2:${BUILD_NUMBER}
+            docker push rima603/backprojet2:latest
+            docker push rima603/frontprojet2:${BUILD_NUMBER}
+            docker push rima603/frontprojet2:latest
           """
         }
       }
