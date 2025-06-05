@@ -54,7 +54,12 @@ pipeline {
           sh '''
             docker rm -f mysql-test || true
 
-            docker run -d --name mysql-test -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE= banckaccount -p 3306:3306 mysql:8.0
+docker run -d \
+  --name mysql-test \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -e MYSQL_DATABASE=bankaccount \
+  -p 3306:3306 \
+  mysql:8.0
 
             echo "⏳ Attente de démarrage de MySQL..."
             for i in $(seq 1 20); do
