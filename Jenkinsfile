@@ -121,7 +121,7 @@ stage("SonarQube Analysis") {
           }
           dir('ebanking-frontend') {
             sh """
-              export DOCKER_BUILDKIT=1
+            
 
               docker build -t rima603/frontprojet2:${BUILD_NUMBER} .
               docker tag rima603/frontprojet2:${BUILD_NUMBER} rima603/frontprojet2:latest
