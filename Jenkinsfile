@@ -116,13 +116,15 @@ stage("SonarQube Analysis") {
           dir('ebanking-backend') {
             sh """
               docker build -t rima603/backprojet1:${BUILD_NUMBER} .
-              docker tag rima603/backprojet1:${BUILD_NUMBER} rima603/backprojet1:latest
+              docker tag rima603/backprojet1:${BUILD_NUMBER} rima603/backprojet2:latest
             """
           }
           dir('ebanking-frontend') {
             sh """
+              export DOCKER_BUILDKIT=1
+
               docker build -t rima603/frontprojet1:${BUILD_NUMBER} .
-              docker tag rima603/frontprojet1:${BUILD_NUMBER} rima603/frontprojet1:latest
+              docker tag rima603/frontprojet1:${BUILD_NUMBER} rima603/frontprojet2:latest
             """
           }
         }
