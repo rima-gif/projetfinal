@@ -8,7 +8,12 @@
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
-        }
+        },
+        
+"defaultProject": "ebanking-frontend",
+  "cli": {
+    "analytics": "99c5cc1f-be29-4152-a493-d9997c1a7520"
+  }
       },
       "root": "",
       "sourceRoot": "src",
@@ -43,9 +48,9 @@
                   "maximumError": "1mb"
                 },
                 {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                "type": "anyComponentStyle",
+  "maximumWarning": "6kb",
+  "maximumError": "10kb"
                 }
               ],
               "fileReplacements": [
@@ -105,8 +110,8 @@
       }
     }
   },
-  "defaultProject": "ebanking-frontend",
   "cli": {
-    "analytics": "99c5cc1f-be29-4152-a493-d9997c1a7520"
+    "analytics": "9ac304ca-09c3-4e30-ba6a-648211fe2ba1"
   }
+ 
 }
