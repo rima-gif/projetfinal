@@ -20,7 +20,6 @@ import java.util.Map;
 @AllArgsConstructor
 @Slf4j
 //J'autorise toute les domaine
-@CrossOrigin(origins = "*")
 public class CustomerRestController {
     private BankAccountService bankAccountService;
 
