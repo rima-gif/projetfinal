@@ -20,10 +20,7 @@ import java.util.Map;
 @AllArgsConstructor
 @Slf4j
 //J'autorise toute les domaine
-@CrossOrigin(origins = "http://192.168.40.124:30083",
-    allowedHeaders = "*",
-    methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS}
-)
+@CrossOrigin(origins = "*")
 public class CustomerRestController {
     private BankAccountService bankAccountService;
 
