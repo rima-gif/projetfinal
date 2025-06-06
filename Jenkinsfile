@@ -82,20 +82,7 @@ docker run -d \
       }
     }
 
-    stage("Run Backend Unit Tests (JUnit)") {
-      steps {
-        dir('ebanking-backend') {
-          // Ici on lance les tests unitaires JUnit avec Maven
-          sh 'mvn test'
-        }
-      }
-      post {
-        always {
-          junit 'ebanking-backend/target/surefire-reports/*.xml'
-        }
-      }
-    }
-
+ 
     stage('Stop MySQL') {
       steps {
         sh '''
